@@ -23,7 +23,7 @@ then
 fi
 
 SRC='/etc/apt/sources.list.d/dotdeb.list'
-KEY='/etc/apt/trusted.gpg.d/dotdeb.keyring'
+KEY='/etc/apt/trusted.gpg.d/dotdeb-keyring.gpg'
 
 function dotdeb_php54 {
     echo 'deb http://packages.dotdeb.org wheezy all' > ${SRC}
@@ -67,7 +67,6 @@ apt-get install -y \
     php5-intl \
     php5-mcrypt \
     php5-memcache \
-    php5-memcached \
     php5-mysqlnd \
     php5-redis \
     php5-sqlite \
