@@ -1,0 +1,76 @@
+#!/bin/bash
+
+# Copyright (c) 2015, Rentabiliweb Group
+#
+# Permission  to use,  copy, modify,  and/or  distribute this  software for  any
+# purpose  with  or without  fee  is hereby  granted,  provided  that the  above
+# copyright notice and this permission notice appear in all copies.
+#
+# THE SOFTWARE IS PROVIDED "AS IS"  AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+# REGARD TO  THIS SOFTWARE INCLUDING  ALL IMPLIED WARRANTIES  OF MERCHANTABILITY
+# AND FITNESS.  IN NO EVENT SHALL  THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+# INDIRECT, OR  CONSEQUENTIAL DAMAGES OR  ANY DAMAGES WHATSOEVER  RESULTING FROM
+# LOSS OF USE, DATA OR PROFITS,  WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+# OTHER  TORTIOUS ACTION,  ARISING  OUT OF  OR  IN CONNECTION  WITH  THE USE  OR
+# PERFORMANCE OF THIS SOFTWARE.
+
+# https://www.dotdeb.org/instructions/
+
+if [ ${#} -lt 1 ]
+then
+    echo "You need to choose one PHP version."
+    exit 1
+fi
+
+SRC='/etc/apt/sources.list.d/dotdeb.list'
+KEY='/etc/apt/trusted.gpg.d/dotdeb.keyring'
+
+function dotdeb_php54 {
+    echo 'deb http://packages.dotdeb.org wheezy all' > ${SRC}
+}
+
+function dotdeb_php55 {
+    echo 'deb http://packages.dotdeb.org wheezy-php55 all' > ${SRC}
+}
+
+function dotdeb_php56 {
+    echo 'deb http://packages.dotdeb.org wheezy-php56 all' > ${SRC}
+}
+
+# Add the main repository to your sources.list
+case ${1} in
+    54|5.4|php54|PHP54)
+	dotdeb_php54
+	;;
+    55|5.5|php55|PHP55)
+	dotdeb_php55
+	;;
+    56|5.6|php56|PHP56)
+	dotdeb_php56
+	;;
+    default)
+	dotdeb_php54
+	;;
+esac
+
+# Fetch and install the GnuPG key
+curl -sL http://www.dotdeb.org/dotdeb.gpg | apt-key --keyring ${KEY} add -
+
+# Install
+apt-get update
+apt-get install -y \
+    php5-cli \
+    php5-curl \
+    php5-gd \
+    php5-geoip \
+    php5-imagick \
+    php5-intl \
+    php5-mcrypt \
+    php5-memcache \
+    php5-memcached \
+    php5-mysqlnd \
+    php5-redis \
+    php5-sqlite \
+    php5-tidy \
+    php5-xdebug
+# EOF
