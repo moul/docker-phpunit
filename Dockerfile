@@ -33,7 +33,6 @@ RUN apt-get update && \
       php5-intl \
       php5-mcrypt \
       php5-memcache \
-      php5-memcached \
       php5-mysqlnd \
       php5-redis \
       php5-sqlite \
