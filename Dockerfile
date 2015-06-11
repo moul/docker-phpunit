@@ -36,7 +36,8 @@ RUN apt-get update && \
        php5-readline \
        php5-redis \
        php5-sqlite \
-       php5-tidy
+       php5-tidy \
+       php5-xdebug
 
 # get composer (http://getcomposer.org/)
 RUN wget -q -O /usr/local/bin/composer.phar http://getcomposer.org/composer.phar && \
