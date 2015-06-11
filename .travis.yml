@@ -1,0 +1,10 @@
+sudo: true
+
+install:
+- sudo bach -c 'echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list'
+- sudo bash -c 'curl -sL http://www.dotdeb.org/dotdeb.gpg | apt-key --keyring /etc/apt/trusted.gpg.d/docker-keyring.gpg add -'
+- sudo apt-get update
+- sudo apt-get lxc-docker
+
+script:
+- docker build -t rentabiliweb/phpunit .
