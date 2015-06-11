@@ -25,7 +25,6 @@ RUN apt-get update && \
        php5-cli \
        php5-curl \
        php5-gd \
-       php5-gearman \
        php5-geoip \
        php5-imagick \
        php5-intl \
@@ -33,7 +32,6 @@ RUN apt-get update && \
        php5-memcache \
        php5-memcached \
        php5-mysqlnd \
-       php5-readline \
        php5-redis \
        php5-sqlite \
        php5-tidy \
@@ -42,10 +40,10 @@ RUN apt-get update && \
 # get composer (http://getcomposer.org/)
 RUN wget -q -O /usr/local/bin/composer.phar http://getcomposer.org/composer.phar && \
     chmod 755 /usr/local/bin/composer.phar && \
-    ln -s /usr/local/bin/composer.phar /usr/local/bin/composer && \
+    ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
 
 # get phpunit (http://phpunit.de/)
 RUN wget -q -O /usr/local/bin/phpunit.phar https://phar.phpunit.de/phpunit.phar && \
     chmod 755 /usr/local/bin/phpunit.phar && \
-    ln -s /usr/local/bin/phpunit.phar /usr/local/bin/phpunit && \
+    ln -s /usr/local/bin/phpunit.phar /usr/local/bin/phpunit
 # EOF
