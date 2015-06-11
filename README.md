@@ -1,5 +1,7 @@
 # docker-phpunit
 
+[![Build Status](https://travis-ci.org/rentabiliweb/docker-phpunit.svg?branch=master)](https://travis-ci.org/rentabiliweb/docker-phpunit)
+
 #### Table of Contents
 
 1. [Overview](#overview)
@@ -9,6 +11,8 @@
 5. [Development](#development)
 
 ## Overview
+
+Docker images and builders for PHPUnit.
 
 ## Description
 
