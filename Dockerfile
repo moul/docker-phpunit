@@ -40,7 +40,7 @@ RUN apt-get update && \
       php5-xdebug
 
 # get composer (http://getcomposer.org/)
-RUN wget -q -O /usr/local/bin/composer.phar http://getcomposer.org/composer.phar && \
+RUN wget -q -O /usr/local/bin/composer.phar https://getcomposer.org/composer.phar && \
     chmod 755 /usr/local/bin/composer.phar && \
     ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
 
