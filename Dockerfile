@@ -35,8 +35,6 @@ RUN wget -q -O /usr/local/bin/phpunit.phar https://phar.phpunit.de/phpunit.phar 
     chmod 755 /usr/local/bin/phpunit.phar && \
     ln -s /usr/local/bin/phpunit.phar /usr/local/bin/phpunit
 
-ADD local.ini /etc/php5/mods-available/local.ini
 ADD php-choose-version /usr/sbin/php-choose-version
-
 RUN php-choose-version 5.4
 # EOF

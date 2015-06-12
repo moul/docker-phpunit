@@ -32,7 +32,6 @@ function dotdeb_php54 {
 
 function dotdeb_php55 {
     echo 'deb http://packages.dotdeb.org wheezy-php55 all' > ${SRC}
-    PKG='php5-cli php5-curl php5-gd php5-geoip php5-imagick php5-intl php5-mcrypt php5-memcache php5-mysqlnd php5-redis php5-sqlite php5-tidy'
 }
 
 function dotdeb_php56 {
@@ -60,8 +59,36 @@ esac
 
 # Install PHP
 apt-get update
-apt-get install -y ${PKG}
+apt-get install --assume-yes --force-yes ${PKG}
 
 # Configure PHP
-php5enmod local
+php5dismod opcache
+cat <<EOF > /etc/php5/cli/conf.d/00-local.ini
+; http://php.net/manual/en/ini.core.php
+
+[php]
+short_open_tag = On
+display_errors = On
+display_startup_errors = On
+
+[date]
+date.timezone = "Europe/Amsterdam"
+
+[mysql]
+mysql.allow_persistent = Off
+
+[mysqli]
+mysqli.allow_persistent = Off
+
+[mysqlnd]
+mysqlnd.collect_statistics = Off
+mysqlnd.collect_memory_statistics = Off
+
+[postgresql]
+pgsql.allow_persistent = Off
+
+[mssql]
+mssql.allow_persistent = Off
+; EOF
+EOF
 # EOF
