@@ -23,21 +23,7 @@ RUN echo 'Europe/Amsterdam' > /etc/timezone && \
     dpkg-reconfigure tzdata
 
 RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y \
-      php5-cli \
-      php5-curl \
-      php5-gd \
-      php5-geoip \
-      php5-imagick \
-      php5-intl \
-      php5-mcrypt \
-      php5-memcache \
-      php5-mysqlnd \
-      php5-redis \
-      php5-sqlite \
-      php5-tidy \
-      php5-xdebug
+    apt-get upgrade -y
 
 # get composer (http://getcomposer.org/)
 RUN wget -q -O /usr/local/bin/composer.phar https://getcomposer.org/composer.phar && \
@@ -49,6 +35,8 @@ RUN wget -q -O /usr/local/bin/phpunit.phar https://phar.phpunit.de/phpunit.phar 
     chmod 755 /usr/local/bin/phpunit.phar && \
     ln -s /usr/local/bin/phpunit.phar /usr/local/bin/phpunit
 
-ADD 00-local.ini /etc/php5/cli/conf.d/00-local.ini
+ADD local.ini /etc/php5/mods-available/local.ini
 ADD php-choose-version /usr/sbin/php-choose-version
+
+RUN php-choose-version 5.4
 # EOF

@@ -24,6 +24,7 @@ fi
 
 SRC='/etc/apt/sources.list.d/dotdeb.list'
 KEY='/etc/apt/trusted.gpg.d/dotdeb-keyring.gpg'
+PKG='php5-cli php5-curl php5-gd php5-geoip php5-imagick php5-intl php5-mcrypt php5-memcache php5-mysqlnd php5-redis php5-sqlite php5-tidy php5-xdebug'
 
 function dotdeb_php54 {
     echo 'deb http://packages.dotdeb.org wheezy all' > ${SRC}
@@ -31,13 +32,17 @@ function dotdeb_php54 {
 
 function dotdeb_php55 {
     echo 'deb http://packages.dotdeb.org wheezy-php55 all' > ${SRC}
+    PKG='php5-cli php5-curl php5-gd php5-geoip php5-imagick php5-intl php5-mcrypt php5-memcache php5-mysqlnd php5-redis php5-sqlite php5-tidy'
 }
 
 function dotdeb_php56 {
     echo 'deb http://packages.dotdeb.org wheezy-php56 all' > ${SRC}
 }
 
-# Add the main repository to your sources.list
+# Add to key to your trusted.gpg.d
+curl -sL http://www.dotdeb.org/dotdeb.gpg | apt-key --keyring ${KEY} add -
+
+# Add the repository to your sources.list.d
 case ${1} in
     54|5.4|php54|PHP54)
 	dotdeb_php54
@@ -53,23 +58,10 @@ case ${1} in
 	;;
 esac
 
-# Fetch and install the GnuPG key
-curl -sL http://www.dotdeb.org/dotdeb.gpg | apt-key --keyring ${KEY} add -
-
-# Install
+# Install PHP
 apt-get update
-apt-get install -y \
-    php5-cli \
-    php5-curl \
-    php5-gd \
-    php5-geoip \
-    php5-imagick \
-    php5-intl \
-    php5-mcrypt \
-    php5-memcache \
-    php5-mysqlnd \
-    php5-redis \
-    php5-sqlite \
-    php5-tidy \
-    php5-xdebug
+apt-get install -y ${PKG}
+
+# Configure PHP
+php5enmod local
 # EOF
