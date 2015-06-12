@@ -62,7 +62,6 @@ apt-get update
 apt-get install --assume-yes --force-yes ${PKG}
 
 # Configure PHP
-php5dismod opcache
 cat <<EOF > /etc/php5/cli/conf.d/00-local.ini
 ; http://php.net/manual/en/ini.core.php
 

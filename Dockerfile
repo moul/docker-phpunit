@@ -12,7 +12,7 @@
 # OTHER  TORTIOUS ACTION,  ARISING  OUT OF  OR  IN CONNECTION  WITH  THE USE  OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-# http://phpunit.de/
+# https://phpunit.de/
 
 FROM rentabiliweb/wheezy:amd64
 MAINTAINER Rentabiliweb Group
