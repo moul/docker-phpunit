@@ -1,4 +1,4 @@
-B1;2csudo: true
+sudo: true
 
 install:
 - sudo apt-get update
