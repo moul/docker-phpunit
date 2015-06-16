@@ -20,10 +20,12 @@ the xUnit architecture for unit testing frameworks.
 
 ## Usage
 
-You can choose you PHP version with choose-php-version.
+You  can choose  you PHP  version  with choose-php-version  binary. The  default
+version is 5.4 from [Dotdeb](https://www.dotdeb.org/).
 
 ```bash
 $ docker run \
+  	 --rm \
   	 -v /path/to/bind/from/host:/path/to/bind/in/container:rw \
 	 rentabiliweb/phpunit \
 	 bash -c 'choose-php-version 5.5 && cd /path/to/bind/in/container && phpunit'
