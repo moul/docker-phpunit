@@ -26,12 +26,12 @@ RUN apt-get update && \
     apt-get upgrade -y
 
 # get composer (http://getcomposer.org/)
-RUN wget -q -O /usr/local/bin/composer.phar https://getcomposer.org/composer.phar && \
+RUN curl -Ls -o /usr/local/bin/composer.phar https://getcomposer.org/composer.phar && \
     chmod 755 /usr/local/bin/composer.phar && \
     ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
 
 # get phpunit (http://phpunit.de/)
-RUN wget -q -O /usr/local/bin/phpunit.phar https://phar.phpunit.de/phpunit.phar && \
+RUN curl -Ls -o /usr/local/bin/phpunit.phar https://phar.phpunit.de/phpunit.phar && \
     chmod 755 /usr/local/bin/phpunit.phar && \
     ln -s /usr/local/bin/phpunit.phar /usr/local/bin/phpunit
 
