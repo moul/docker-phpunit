@@ -1,6 +1,6 @@
 # docker-phpunit
 
-[![Build Status](https://travis-ci.org/rentabiliweb/docker-phpunit.svg?branch=master)](https://travis-ci.org/rentabiliweb/docker-phpunit)
+[![Build Status](https://travis-ci.org/rentabiliweb/docker-phpunit.svg?branch=master)](https://travis-ci.org/rentabiliweb/docker-phpunit) [![GuardRails badge](https://badges.production.guardrails.io/moul/docker-phpunit.svg)](https://www.guardrails.io)
 
 #### Table of Contents
 
